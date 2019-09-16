@@ -9,8 +9,6 @@ class ChartData extends Component {
 		this.props.fetchData();
 	}
 	render() {
-		console.log(this.props.dataSource, '$$$$$$$$$$$');
-
 		return (
 			<Chart
 				width={'800px'}

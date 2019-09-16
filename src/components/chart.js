@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import Chart from 'react-google-charts';
-import ChartDataSorted from '../datas/parsingData';
+import { fetchData } from '../store';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+class ChartData extends Component {
+	componentDidMount() {
+		this.props.fetchData();
+	}
 	render() {
+		console.log(this.props.dataSource, '$$$$$$$$$$$');
+
 		return (
 			<Chart
 				width={'800px'}
 				height={'800px'}
 				chartType="BarChart"
 				loader={<div>Loading Chart</div>}
-				data={ChartDataSorted}
+				data={this.props.dataSource}
 				options={{
 					title: 'Near Earth Object',
 					hAxis: {
@@ -28,3 +34,13 @@ export default class App extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+	dataSource: state.dataSource
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	fetchData: () => dispatch(fetchData())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChartData);

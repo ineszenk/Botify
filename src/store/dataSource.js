@@ -34,7 +34,6 @@ export const fetchData = () => async (dispatch) => {
 				data.near_earth_objects[i].close_approach_data[0] !== undefined
 					? data.near_earth_objects[i].close_approach_data[0].orbiting_body
 					: 'none';
-			console.log(orbiting_body, 'ORBITING BODY');
 			//Get the estimated diameter average
 			let average =
 				(data.near_earth_objects[i].estimated_diameter.kilometers.estimated_diameter_min +

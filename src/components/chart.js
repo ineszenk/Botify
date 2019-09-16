@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 import Chart from 'react-google-charts';
-import ChartData from '../datas/parsingData';
+import ChartDataSorted from '../datas/parsingData';
 
 export default class App extends Component {
 	render() {
@@ -11,7 +11,7 @@ export default class App extends Component {
 				height={'800px'}
 				chartType="BarChart"
 				loader={<div>Loading Chart</div>}
-				data={ChartData}
+				data={ChartDataSorted}
 				options={{
 					title: 'Near Earth Object',
 					hAxis: {
@@ -22,6 +22,7 @@ export default class App extends Component {
 						title: 'NEO Name'
 					}
 				}} // For tests
+				chartWrapperParams={{ view: { columns: [ 0, 1, 2 ] } }}
 				rootProps={{ 'data-testid': '1' }}
 			/>
 		);
